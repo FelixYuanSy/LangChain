@@ -3,6 +3,7 @@ from typing import Union
 
 from google import genai
 from google.genai import types
+from langchain_core.messages import SystemMessage, HumanMessage
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_google_genai import ChatGoogleGenerativeAI
@@ -25,8 +26,14 @@ client = genai.Client()
 # chain = response | output_text
 # print(chain)
 
-llm = ChatGoogleGenerativeAI(model ="gemini-3-flash-preview" )
-prompt = ChatPromptTemplate.from_template("You are my study and life leader,please answer {topic} question")
-chain = prompt | llm | StrOutputParser()
-response = chain.invoke({"topic":"advantages of LangChain "})
-print(response)
+llm = ChatGoogleGenerativeAI(model ="gemini-3-flash-preview",temperature = 2 )
+# prompt = ChatPromptTemplate.from_template("You are my study and life leader,please answer {topic} question")
+# chain = prompt | llm | StrOutputParser()
+messages = [
+    SystemMessage(content="请发挥想象进行词语填空"),
+    HumanMessage(content="我他妈的___")
+]
+# response = chain.invoke({"topic":"advantages of LangChain "})
+parse = StrOutputParser()
+chain = llm | parse
+print(chain.invoke(messages))
