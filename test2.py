@@ -21,6 +21,7 @@ add_tool = StructuredTool.from_function(
 	response_format="content_and_artifact" #展示过程
 )
 # print(add_tool.invoke({"a":2,"b":5})) #这样调用不显示response_fomat
+tools = []
 print(add_tool.invoke(
 	{
 		"name":"ADD",
