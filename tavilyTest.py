@@ -15,4 +15,10 @@ for tool_call in ai_msg.tool_calls:
      tool_msg = tool.invoke(tool_call)
      messages.append(tool_msg)
 print(model.invoke(messages).content)
-# for tool in ai_msg.tools:
+# The weather in Hangzhou on **February 25, 2026, at 18:15 local time** is as follows:
+#
+# *   **Temperature:** 11.1°C (52.0°F)
+# *   **Feels like:** 9.7°C (49.5°F)
+# *   **Condition:** Partly cloudy
+# *   **Wind:** 11.5 kph (7.2 mph) from the East
+# *   **Humidity:** 76%
